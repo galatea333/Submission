@@ -1,0 +1,21 @@
+<!-- notes/templates/notes/note_detail.html -->
+{% extends 'base.html' %}
+{% block title %}
+    Sticky Notes - {{ note.title }}
+{% endblock %}
+{% block content %}
+    <h2>
+        {{ note.title }}
+    </h2>
+    <p>
+        {{ note.content }}
+    </p>
+    <p>
+        Created at: {{ note.created_at|date:"Y-m-d H:i" }}
+    </p>
+    <div>
+        <a href="{% url 'note_update' pk=note.pk %}">✏️ Update Note</a>
+        <a href="{% url 'note_delete' pk=note.pk %}" onclick="return confirm('Are you sure you want to delete this note?');">🗑️ Delete Note</a>
+        <a href="{% url 'note_list' %}">🔙 Back to Note List</a>
+    </div>
+{% endblock %}  
